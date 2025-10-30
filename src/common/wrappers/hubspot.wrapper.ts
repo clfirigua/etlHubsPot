@@ -11,7 +11,6 @@ export interface IHubspotWrapper {
     PostCreteLeads(lead: IpropertiesCreateLead): Promise<IResultL<IcreateLeadResponse>>
 }
 
-@Injectable()
 export class HubspotWrapper implements IHubspotWrapper {
 
     private readonly logger = new Logger(HubspotWrapper.name);
