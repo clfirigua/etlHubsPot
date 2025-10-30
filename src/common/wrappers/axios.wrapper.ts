@@ -14,7 +14,7 @@ export class AxiosWrapper {
 
   private createHeders = (token?:string) =>{
     const headers = { 'Content-Type': 'application/json'}
-    if(token){ headers["Authorization"] = token}
+    if(token){ headers["Authorization"] = `Bearer ${token}`}
     return headers
   }
 

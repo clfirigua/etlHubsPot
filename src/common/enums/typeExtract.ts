@@ -1,4 +1,4 @@
 export enum typeExtract {
-    "LOADS",
-    "LEADS"
+    "DEALS"="DEALS",
+    "LEADS" ="LEADS"
 }

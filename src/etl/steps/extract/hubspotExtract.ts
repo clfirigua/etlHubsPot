@@ -9,12 +9,14 @@ export class HubspotExtractDeals implements StepBase {
     name: string = "HubspotExtractDeals";
     private hubsPorWrapper: HubspotWrapper = new HubspotWrapper();
     private context: StepContext<any, any>;
+    private typeExtract:typeExtract
 
-    constructor(private readonly typeExtract: typeExtract) {
+    constructor() {
 
     }
     async execute(context: StepContext<any, any>): Promise<StepContext> {
         this.context = context
+        this.typeExtract = this.context.metadata.typeExtract
         return this.typeExtract === typeExtract.LEADS ? this.extractLeads() : this.extracrDeals()
     }
 

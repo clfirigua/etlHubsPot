@@ -33,10 +33,15 @@ export const MapperDatos = (data: Record<string, any>, transformData: Record<str
     }
     const keysType = Object.keys(transformData);
     const newtransformData = {}
-    for (const key in keysType) {
+    for (const key of keysType) {
+
+        if(transformData[key] == DataType.STRING ){
+            newtransformData[key] = data[key]
+            continue
+        }
         newtransformData[key] = library[transformData[key]](data[key])
     }
-
+ 
     return newtransformData
 }
 

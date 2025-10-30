@@ -8,13 +8,12 @@ export const DealTypes = {
   amount: DataType.NUMBER,
   pipeline: DataType.STRING,
   dealstage: DataType.STRING,
-  created_at: DataType.DATE,
-  closed_at: DataType.DATE,
-  last_modified: DataType.DATE,
+  createdAt: DataType.DATE,
+  closedate: DataType.DATE,
+  updatedAt: DataType.DATE,
   archived: DataType.BOOLEAN,
   url: DataType.STRING,
   is_closed: DataType.BOOLEAN,
-  days_open: DataType.NUMBER,
   month: DataType.MONTH,
   year: DataType.YEAR,
 };
@@ -25,12 +24,14 @@ export const LeadTypes = {
   firstname: DataType.STRING,
   lastname: DataType.STRING,
   email: DataType.STRING,
-  created_at: DataType.DATE,
-  last_modified: DataType.DATE,
+  createdAt: DataType.DATE,
+  lastmodifieddate: DataType.DATE,
   lifecyclestage: DataType.STRING,
   archived: DataType.BOOLEAN,
   url: DataType.STRING,
   month: DataType.MONTH,
   year: DataType.YEAR,
 };
+
+
 

@@ -1,8 +1,8 @@
 export enum DataType {
-    "STRING",
-    "NUMBER",
-    "DATE",
-    "BOOLEAN",
-    "MONTH",
-    "YEAR"
+    "STRING"="STRING",
+    "NUMBER"="NUMBER",
+    "DATE"="DATE",
+    "BOOLEAN"="BOOLEAN",
+    "MONTH"="MONTH",
+    "YEAR"="YEAR"
 }

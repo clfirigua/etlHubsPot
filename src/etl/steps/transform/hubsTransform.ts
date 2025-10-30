@@ -11,18 +11,28 @@ export class HubsTransform implements StepBase {
 
     constructor() { }
     async execute(context: StepContext<any, any>): Promise<StepContext> {
-        this.context = context;
-        context.metadata.DataType === typeExtract.LEADS ? this.TransformDeal() : this.TransformLead()
+        this.context = context
+        this.TransformData()
+        context.metadata.typeExtract == typeExtract.LEADS ? this.TransformLead() : this.TransformDeal()
         return context
     }
 
-    private TransformDeal():void {
+    private TransformDeal(): void {
         this.context.data = this.context.data.map(element => MapperDatos(element, DealTypes))
     }
-    private TransformLead():void {
+    private TransformLead(): void {
         this.context.data = this.context.data.map(element => MapperDatos(element, LeadTypes))
+    }
+
+    private TransformData = () => {
+        this.context.data = this.context.data.map(data => {
+            const { properties, ...rest } = data
+            return { ...rest, ...properties, month: rest.createdAt, year: rest.createdAt }
+        });
     }
 
 
 
 }
+
+

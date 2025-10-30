@@ -23,7 +23,7 @@ export class HubspotWrapper implements IHubspotWrapper {
 
     async getAllLeads(): Promise<IResultL<IPropertiesLeads>[]> {
         try {
-            const response = await this.axiosWrapper.post<IHubspotResponse<IResultL<IPropertiesLeads>>>('objects/contacts/search', buildLeadSearchBody);
+            const response = await this.axiosWrapper.post<IHubspotResponse<IResultL<IPropertiesLeads>>>('objects/contacts/search', buildLeadSearchBody());
             return response.results
         } catch (error) {
             this.logger.error("HubspotWrapper.getAllLeads", error)
@@ -42,10 +42,10 @@ export class HubspotWrapper implements IHubspotWrapper {
 
     async getAllDeals(): Promise<IResultL<PropertiesDeals>[]> {
         try {
-            const response = await this.axiosWrapper.post<IHubspotResponse<IResultL<PropertiesDeals>>>('objects/deals');
+            const response = await this.axiosWrapper.get<IHubspotResponse<IResultL<PropertiesDeals>>>('objects/deals');
             return response.results
         } catch (error) {
-            this.logger.error("HubspotWrapper.getAllDeals", error)
+            this.logger.error("HubspotWrapper.getAllDeals", error.message)
             return []
         }
     }
