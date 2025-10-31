@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import { EtlModule } from './etl/etl.module';
 import { DatabaseModule } from './database/database.module';
-import { SeedModule } from './seed/seed.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [EtlModule, DatabaseModule, SeedModule],
+  imports: [
+    ScheduleModule.forRoot(),
+    EtlModule,
+    DatabaseModule],
   controllers: [],
   providers: [],
 })

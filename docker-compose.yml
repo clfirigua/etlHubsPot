@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: etl_postgres
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${USERNAMEPG}
+      POSTGRES_PASSWORD: ${PASSWORDPG}
+      POSTGRES_DB: ${DATABASEPG}
+    ports:
+      - "${PORTPG}:5432"
+    volumes:
+      - ${POSTGRES_VOLUME}:/var/lib/postgresql/data
+    networks:
+      - etl_network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: etl_pgadmin
+    restart: always
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT}:80"
+    depends_on:
+      - postgres
+    networks:
+      - etl_network
+
+networks:
+  etl_network:
+    driver: bridge

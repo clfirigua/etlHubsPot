@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { PipelineFactoryService } from './services/pipeline-factory.service';
 import { EtlRunnerService } from './services/etl-runner.service';
-import { EtlController } from './etl.controller';
+import { LoadPostgresStep } from './steps/load/load-postgres.step';
+import { DatabaseModule } from 'src/database/database.module';
 
 @Module({
-    providers:[PipelineFactoryService,EtlRunnerService],
-    controllers: [EtlController]
+    imports:[DatabaseModule],
+    providers:[PipelineFactoryService,EtlRunnerService,LoadPostgresStep],
+    controllers: []
 })
 export class EtlModule {}

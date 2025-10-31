@@ -1,4 +1,4 @@
-import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
+import { Logger } from "@nestjs/common";
 import { AxiosWrapper } from "./axios.wrapper";
 import { envs } from "src/config/env";
 import { buildLeadSearchBody } from "../helpers/hubspot.helper";
