@@ -11,7 +11,7 @@ export class EtlRunnerService {
 
   constructor(private readonly pipelineFactory: PipelineFactoryService) { }
 
-  // @Cron(envs.scrapingCron || CronExpression.EVERY_10_MINUTES)
+  @Cron(envs.scrapingCron || CronExpression.EVERY_10_MINUTES)
   async runPipelineJob() {
     await Promise.all([
       this.runPipeline(typeExtract.DEALS),
